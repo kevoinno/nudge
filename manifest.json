@@ -2,26 +2,27 @@
   "manifest_version": 3,
   "name": "Nudge",
   "version": "1.0",
-
-  "description": "Placeholder for firefox demo",
-
-  "icons": {
-    "48": "icon.png"
-  },
-
+  "description": "Reduce doomscrolling and connect with the people that matter",
+  "icons": { "48": "icon.png" },
   "browser_specific_settings": {
     "gecko": {
-      "id": "borderify@mozilla.org",
-      "data_collection_permissions": {
-        "required": ["none"]
-      }
+      "id": "nudge@personal",
+      "data_collection_permissions": { "required": ["none"] }
     }
   },
-
+  "permissions": ["tabs"],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["borderify.js"]
+      "matches": [
+        "*://*.linkedin.com/*",
+        "*://*.reddit.com/*",
+        "*://*.twitch.tv/*",
+        "*://*.youtube.com/*"
+      ],
+      "js": ["content.js"]
     }
   ]
 }
